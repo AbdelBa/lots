@@ -5,7 +5,7 @@ import maths.Vertex;
 
 public class Atom extends Vertex
 {
-    public Atom(Character label)
+    public Atom(Integer label)
     {
         super(label);
     }

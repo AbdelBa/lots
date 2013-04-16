@@ -7,11 +7,11 @@ import java.util.HashSet;
  */
 public class Vertex
 {
-    private Character label;
+    private Integer label;
     private HashSet<Edge> incidentEdges;
     private Graph graph;
 
-    public Vertex(Character label)
+    public Vertex(Integer label)
     {
         this.label = label;
         incidentEdges = new HashSet<Edge>();
@@ -23,11 +23,6 @@ public class Vertex
             graph.removeEdge(e);
 
         this.graph = null;
-    }
-
-    public String toString()
-    {
-        return Character.toString(label);
     }
 
     public Graph getGraph()
@@ -46,4 +41,8 @@ public class Vertex
         return incidentEdges;
     }
 
+    public String toString()
+    {
+        return Integer.toString(label);
+    }
 }

@@ -5,18 +5,22 @@ import maths.Vertex;
 
 public class Bond extends Edge
 {
-    public Bond(Atom a1, Atom a2)
+    public Bond(Vertex v1, Vertex v2)
     {
-        super(a1, a2);
+        super(v1, v2);
     }
 
-    @Override
-    public void bindVertice(Vertex v1, Vertex v2)
+    public Bond()
+    {
+    }
+
+    public void bindVertice(Atom v1, Atom v2)
     {
         super.bindVertice(v1, v2);
     }
     
-    public void bindVertice(Atom a1, Atom a2)
+    @Override
+    public void bindVertice(Vertex a1, Vertex a2)
     {        
         try
         {

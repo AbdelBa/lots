@@ -52,7 +52,7 @@ public class Graph
 
     public String toString()
     {
-        return String.format("%s \nV = %s \nE = %s", name, vertice, edges)
+        return String.format("%s \n\tV = %s \n\tE = %s", name, vertice, edges)
                 .replace('[', '{').replace(']', '}');
     }
 }
