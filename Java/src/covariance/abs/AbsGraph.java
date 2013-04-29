@@ -10,7 +10,7 @@ public abstract class AbsGraph
 
     public AbsGraph(String name)
     {
-        this.name = name;
+        this.name = "Covariant " + name;
         vertice = new HashSet<AbsVertex>();
         edges = new HashSet<AbsEdge>();
     }
