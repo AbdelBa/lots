@@ -2,8 +2,7 @@ package generics.abs;
 
 import exceptions.NotSameGraphException;
 
-@SuppressWarnings("rawtypes")
-public abstract class AbsEdge<G extends AbsGraph, V extends AbsVertex, E extends AbsEdge>
+public abstract class AbsEdge<G extends AbsGraph<G, V, E>, V extends AbsVertex<G, V, E>, E extends AbsEdge<G, V, E>>
 {
     private V x;
     private V y;
@@ -27,7 +26,6 @@ public abstract class AbsEdge<G extends AbsGraph, V extends AbsVertex, E extends
         unbindVertice();
     }
 
-    @SuppressWarnings("unchecked")
     public void bindVertice(V v1, V v2)
     {
         try
@@ -44,14 +42,14 @@ public abstract class AbsEdge<G extends AbsGraph, V extends AbsVertex, E extends
             if (graph == null)
             {
                 graph = (G) v1.getGraph();
-                graph.getEdges().add(this);
+                graph.getEdges().add((E) this);
             }
 
             this.x = v1;
             this.y = v2;
 
-            v1.getIncidentEdges().add(this);
-            v2.getIncidentEdges().add(this);
+            v1.getIncidentEdges().add((E) this);
+            v2.getIncidentEdges().add((E) this);
 
         }
         catch (Exception e)

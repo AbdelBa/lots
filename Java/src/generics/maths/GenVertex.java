@@ -1,4 +1,4 @@
-package generics.math;
+package generics.maths;
 
 import generics.abs.AbsVertex;
 

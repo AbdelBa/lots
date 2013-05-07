@@ -2,8 +2,7 @@ package generics.abs;
 
 import java.util.HashSet;
 
-@SuppressWarnings("rawtypes")
-public abstract class AbsGraph<G extends AbsGraph, V extends AbsVertex, E extends AbsEdge>
+public abstract class AbsGraph<G extends AbsGraph<G, V, E>, V extends AbsVertex<G, V, E>, E extends AbsEdge<G, V, E>>
 {
     private String name;
     private HashSet<V> vertice;
@@ -26,7 +25,7 @@ public abstract class AbsGraph<G extends AbsGraph, V extends AbsVertex, E extend
     public void addVertex(V v)
     {
         this.vertice.add(v);
-        v.setGraph(this);
+        v.setGraph((G) this);
     }
 
     public void removeVertex(V v)
@@ -35,7 +34,6 @@ public abstract class AbsGraph<G extends AbsGraph, V extends AbsVertex, E extend
         v.unbindGraph();
     }
 
-    @SuppressWarnings("unchecked")
     public void addEdge(E e, V v1, V v2)
     {
         e.bindVertice(v1, v2);
