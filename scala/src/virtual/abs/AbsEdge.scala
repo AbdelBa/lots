@@ -8,11 +8,10 @@ abstract class AbsEdge {
   type V <: AbsVertex
   type E <: AbsEdge
   
-  
-  def this(v1: V, v2: V) = {
+  def this(v1: AbsVertex, v2: AbsVertex) = {
     this()
-    this.x = v1
-    this.y = v2
+    this.x = v1.asInstanceOf[V]
+    this.y = v2.asInstanceOf[V]
   }
 
   def unbindGraph(): Unit = {
@@ -30,13 +29,13 @@ abstract class AbsEdge {
 
       if (graph == null) {
         graph = v1.getGraph.asInstanceOf[G]
-        graph.getEdges.add(this.asInstanceOf[E])
+        graph.getEdges.add(this.asInstanceOf[graph.E])
       }
 
       this.x = v1
       this.y = v2
-      v1.getIncidentEdges.add(this.asInstanceOf[E])
-      v2.getIncidentEdges.add(this.asInstanceOf[E])
+      v1.getIncidentEdges.add(this.asInstanceOf[v1.E])
+      v2.getIncidentEdges.add(this.asInstanceOf[v2.E])
     } catch {
       case e: Exception =>
         e.printStackTrace()
@@ -45,14 +44,14 @@ abstract class AbsEdge {
   }
 
   def unbindVertice(): Unit = {
-    x.getIncidentEdges.remove(this.asInstanceOf[E])
+    x.getIncidentEdges.remove(this.asInstanceOf[x.E])
     x = null.asInstanceOf[V]
-    y.getIncidentEdges.remove(this.asInstanceOf[E])
+    y.getIncidentEdges.remove(this.asInstanceOf[y.E])
     y = null.asInstanceOf[V]
   }
 
   override def toString: String = String.format("(%s, %s)", x, y)
-  
+
   private var x: V = _
   private var y: V = _
   private var graph: G = _

@@ -9,7 +9,7 @@ class AbsVertex(private var label: Integer) {
   type E <: AbsEdge
 
   def unbindGraph(): Unit = {
-    incidentEdges.foreach(e => graph.removeEdge(e));
+    //incidentEdges.foreach(e => graph.removeEdge(e));
 
     this.graph = null.asInstanceOf[G]
   }

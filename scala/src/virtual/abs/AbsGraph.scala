@@ -3,7 +3,7 @@ package virtual.abs
 import scala.collection.mutable.HashSet
 
 class AbsGraph(private var name: String) {
-  
+
   type G <: AbsGraph
   type V <: AbsVertex
   type E <: AbsEdge
